@@ -5,6 +5,7 @@
 package br.com.controlefinanceiro.telas;
 
 import br.com.controlefinanceiro.dal.ModuloConexao;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,21 @@ public class TelaLogin extends javax.swing.JFrame {
             String captura = new String(txtSenha.getPassword());
             pst.setString(2,captura );
             rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                String nome = rs.getString(7);
+                               
+                if(nome.equals("admin")){
+                TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                TelaPrincipal.lblUsuario.setForeground(Color.red);
+                this.dispose();
+                conexao.close();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,"Senha e/ou usuario invalido(s)");
+            }
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -142,7 +158,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLoginActionPerformed
         // TODO add your handling code here:
-        logar();
+        logar();       
     }//GEN-LAST:event_BtnLoginActionPerformed
 
     /**
