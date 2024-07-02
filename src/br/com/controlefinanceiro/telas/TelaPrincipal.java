@@ -85,9 +85,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad.setText("Cadastro");
 
         menCadCategoria.setText("Categoria");
+        menCadCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menCadCategoriaActionPerformed(evt);
+            }
+        });
         menCad.add(menCadCategoria);
 
         menCadTransacao.setText("Transaçao");
+        menCadTransacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menCadTransacaoActionPerformed(evt);
+            }
+        });
         menCad.add(menCadTransacao);
 
         Menu.add(menCad);
@@ -185,6 +195,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaConta conta = new TelaConta();
         conta.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menCadCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadCategoriaActionPerformed
+        // TODO add your handling code here:
+        TelaCategoria categoria = new TelaCategoria();
+        categoria.setVisible(true);
+        Desktop.add(categoria);
+    }//GEN-LAST:event_menCadCategoriaActionPerformed
+
+    private void menCadTransacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadTransacaoActionPerformed
+        // TODO add your handling code here:
+        TelaTransacao transacao = new TelaTransacao();
+        transacao.setVisible(true);
+        Desktop.add(transacao);
+    }//GEN-LAST:event_menCadTransacaoActionPerformed
 
     /**
      * @param args the command line arguments
